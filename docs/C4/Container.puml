@@ -1,0 +1,15 @@
+@startuml Maladireta-Container
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+Person_Ext(usuario, "Usuário", "Usuario que interage com a mala direta")
+Container(webapp, "WebApp", "Angular", "FrontEnd da aplicação")
+Container(api, "API BackEnd", "NET 8", "API Rest para a aplicacao", "BackEnd da aplicação")
+ContainerDb(database, "Banco de Dados", "SQLite", "Banco de Dados da aplicação")
+
+
+Rel(usuario, webapp, "Usa")
+Rel(webapp, api, "Chama por requisições HTTPS")
+Rel(api, database, "Acessa")
+
+@enduml

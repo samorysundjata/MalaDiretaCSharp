@@ -1,0 +1,11 @@
+@startuml
+
+class Destinatario {
+  + Id: int
+  + Nome: string
+  + Email: string
+  + Telefone: string?
+  + Endereco: Endereco
+}
+
+@enduml
