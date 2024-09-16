@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+' !includeurl ICONURL
+
+Container(api, "API Backend", "Class Library.NET 8", "API Rest para a aplicacao", "BackEnd da aplicação"){
+    Component(controller, "Controlador REST", "Controlador MVC", "Recebe Requisições HTTP")
+    Component(service, "Serviço", "Classe de Serviço", "Contém a lógica de negócio")
+    Component(repository, "Repositório", "Interface Repository", "Gerencia operações de banco de dados")
+}
+
+@enduml
