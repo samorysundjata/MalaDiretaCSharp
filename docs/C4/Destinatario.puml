@@ -1,4 +1,4 @@
-@startuml
+@startuml Destinatario-Code
 
 class Destinatario {
   + Id: int
