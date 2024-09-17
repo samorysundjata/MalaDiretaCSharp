@@ -21,7 +21,7 @@ O projeto MalaDiretaCSharp é um sistema de cadastro e validação de destinatá
 ## Arquitetura
 
 O diagrama de contexto abaixo ilustra a interação entre os componentes do sistema:
-
+![Diagrama de Contexto](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Context/MalaDireta-Context.png)
 
 ## Licença
 
