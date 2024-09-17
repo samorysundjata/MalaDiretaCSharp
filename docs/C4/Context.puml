@@ -1,14 +1,12 @@
 @startuml MalaDireta-Context
-
 !includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
-' !define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.1.0
-' !include ICONURL/common.puml
+
 
 Person(admin, "Usuário", "Usuário da Mala Direta", "O usuário da aplicação de Mala Direta")
-System(maladireta, "Mala Direta", "Sistema de cadastro de destinatários e endereços", "Sistema de Mala Direta")
+System(maladireta, "Mala Direta", "Sistema de cadastro e validação de destinatários e seus endereços", "Sistema de Mala Direta")
 System_Ext(viacep, "ViaCEP", "Sistema ViaCEP https://viacep.com.br/", "Sistema externo de consulta e verificação de CEP")
 
-Rel(admin, maladireta, "Gerencia destinatários e endereços", "HTTP")
-Rel(maladireta, viacep, "Consulta CEP", "HTTP")
+Rel(admin, maladireta, "Gerencia destinatários e seus endereços", "HTTPS")
+Rel(maladireta, viacep, "Consulta CEP", "HTTPS")
 
 @enduml
