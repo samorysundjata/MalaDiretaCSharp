@@ -1,11 +1,15 @@
-@startuml Maladireta-Component
+@startuml EnderecoController-Component
 !includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
 
 
 Container(api, "API Backend", "Class Library.NET 8", "API Rest para a aplicacao", "BackEnd da aplicação"){
-    Component(controller, "Controlador REST", "Controlador MVC", "Recebe Requisições HTTP")
-    Component(service, "Serviço", "Classe de Serviço", "Contém a lógica de negócio")
-    Component(repository, "Repositório", "Interface Repository", "Gerencia operações de banco de dados")
+    Component(enderecocontroller, "Controlador REST do Endereço", "Controlador MVC", "Manipula Requisições HTTP")
+    Component(enderecoservice, "Serviço do Endereço", "Classe de Serviço do Endereço", "Contém a lógica de negócio do endereço")
+    Component(enderecorepository, "Repositório do Endereço", "Interface Repository", "Gerencia operações no banco de dados")
 }
+
+Rel(api, enderecocontroller, "Chama", "Verbos HTTP")
+Rel(enderecocontroller, enderecoservice, "Chama", "Task")
+Rel(enderecoservice, enderecorepository, "Chama", "Método")
 
 @enduml
