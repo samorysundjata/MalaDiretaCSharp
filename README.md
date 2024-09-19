@@ -19,17 +19,29 @@ O projeto MalaDiretaCSharp é um sistema de cadastro e validação de destinatá
 
 ## Arquitetura
 
-O diagrama de contexto abaixo ilustra o contexto geral do sistema e sua relação com o sistema externo:
+O diagrama de contexto abaixo ilustra o contexto geral do sistema e sua relação com qualquer sistema externo:
 
 ![Diagrama de Contexto](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Context/MalaDireta-Context.png)
 
-O diagrama de container abaixo ilustra a interação entre os componentes do sistema:
+O diagrama de container abaixo demonstra a interação entre os componentes do sistema:
 
 ![Diagrama de Container](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Container/Maladireta-Container.png)
 
-O diagrama de componente:
+O diagrama de componente do EnderecoController:
 
-![Diagrama de Componente](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Component/EnderecoController-Component.png)
+![Diagrama de Componente](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/EnderecoController/EnderecoController-Component.png)
+
+O diagrama de componente do DestinatarioController:
+
+![Diagrama de Componente](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/DestinatarioController/DestinatarioController-Component.png)
+
+Diagrama de Código da classe Endereco
+
+![Diagrama de Codigo](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Endereco/Endereco-Code.png)
+
+Diagrama de Código da classe Destinatario
+
+![Diagrama de Codigo](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Destinatario/Destinatario-Code.png)
 
 ## Licença
 
