@@ -1,0 +1,31 @@
+{
+  "collection": {
+    "name": "MalaDiretaCollection",
+    "requests": [
+      {
+        "name": "GetAllContacts",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:5000/api/contacts",
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      },
+      {
+        "name": "AddContact",
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:5000/api/contacts",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "name": "John Doe",
+            "email": "john.doe@example.com"
+          }
+        }
+      }
+    ]
+  }
+}
