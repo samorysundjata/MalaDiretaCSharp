@@ -6,6 +6,12 @@ class Destinatario {
   + Email: string
   + Telefone: string?
   + Endereco: Endereco
+
+  + Destinatario(Id: int, Nome: string, Email: string, Endereco: Endereco)
+  + ValidarEmail(): bool
+  + ValidarTelefone(): bool
+  + ValidarEndereco(): bool
+  + Validar(): bool
 }
 
 @enduml
