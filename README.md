@@ -27,22 +27,6 @@ O diagrama de container abaixo demonstra a interação entre os componentes do s
 
 ![Diagrama de Container](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Container/Maladireta-Container.png)
 
-O diagrama de componente do EnderecoController:
-
-![Diagrama de Componente](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/EnderecoController/EnderecoController-Component.png)
-
-O diagrama de componente do DestinatarioController:
-
-![Diagrama de Componente](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/DestinatarioController/DestinatarioController-Component.png)
-
-Diagrama de Código da classe Endereco
-
-![Diagrama de Codigo](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Endereco/Endereco-Code.png)
-
-Diagrama de Código da classe Destinatario
-
-![Diagrama de Codigo](https://github.com/samorysundjata/MalaDiretaCSharp/blob/master/docs/C4/out/Destinatario/Destinatario-Code.png)
-
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](https://choosealicense.com/licenses/mit/)
