@@ -1,0 +1,39 @@
+@startuml MalaDireta_Code
+
+class Endereco {
+  + Logradouro: string
+  + Numero: string
+  + Cidade: string
+  + Estado: string
+  + CEP: string
+
+  + Endereco(logradouro: string, numero: string, cidade: string, estado: string, cep: string)
+  + ValidarEndereco(): bool
+  + ValidarCEP(): bool
+  + Exibir(): void
+}
+
+class Destinatario {
+  + Id: int
+  + Nome: string
+  + Email: string
+  + Telefone: string?
+  + Endereco: Endereco
+
+  + Destinatario(Id: int, Nome: string, Email: string, Endereco: Endereco)
+  + ValidarEmail(): bool
+  + ValidarTelefone(): bool
+  + ValidarEndereco(): bool
+  + Validar(): bool
+}
+
+class MalaDireta {
+  + Destinatarios: List<Destinatario>
+  + Mensagem: string
+
+  + MalaDireta(Destinatarios: List<Destinatario>, Mensagem: string)
+  + AdicionarDestinatario(Destinatario: Destinatario): void
+  + Enviar(): void
+}
+
+@enduml

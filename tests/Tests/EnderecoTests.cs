@@ -6,14 +6,10 @@ namespace Core.Entities.Tests
         public void Endereco_Properties_SetCorrectly()
         {
             // Arrange
-            var endereco = new Endereco();
+            var endereco = new Endereco("Rua A", "123", "São Paulo", "SP", "12345-678");
 
             // Act
-            endereco.Logradouro = "Rua A";
-            endereco.Numero = "123";
-            endereco.Cidade = "São Paulo";
-            endereco.Estado = "SP";
-            endereco.CEP = "12345-678";
+            // Properties are already set via constructor
 
             // Assert
             Assert.Equal("Rua A", endereco.Logradouro);
