@@ -1,11 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infra.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EnderecoController : Controller
+    public class EnderecoController : ControllerBase
     {
+        private readonly AppDbContext _context;
+
+        public EnderecoController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet("endereco")]
         // GET: EnderecoController
         public ActionResult Index()
         {

@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infra.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DestinatarioController : Controller
+    public class DestinatarioController : ControllerBase
     {
-        // GET: DestinatarioController
+        private readonly AppDbContext _context;
+
+        public DestinatarioController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet("destinatario")]
         public ActionResult Index()
         {
             return View();
