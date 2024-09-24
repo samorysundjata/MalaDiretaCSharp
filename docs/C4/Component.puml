@@ -11,7 +11,7 @@ Container(api, "API Backend", "Class Library.NET 8", "API Rest para a aplicacao"
 }
 
 Rel(api, destinatariocontroller, "Chama", "Verbos HTTP")
-Rel(destinatariocontroller, destinatarioservice, "Chama", "Task")
+Rel(destinatariocontroller, destinatarioservice, "Chama", "Dashed")
 Rel(destinatarioservice, destinatariorepository, "Chama", "Método")
 Rel(api, enderecocontroller, "Chama", "Verbos HTTP")
 Rel(enderecocontroller, enderecoservice, "Chama", "Task")

@@ -8,7 +8,7 @@ ContainerDb(database, "Banco de Dados", "SQLite", "Banco de Dados da aplicação
 
 
 Rel(usuario, webapp, "Gerencia")
-Rel(webapp, api, "Chama por requisições HTTPS")
+Rel(webapp, api, "Chama por requisições HTTPS", "JSON")
 Rel(api, database, "Acessa")
 
 @enduml
