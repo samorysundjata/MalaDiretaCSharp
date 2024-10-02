@@ -7,6 +7,6 @@ System(maladireta, "Mala Direta", "Sistema de cadastro e validação de destinat
 System_Ext(viacep, "ViaCEP", "Sistema ViaCEP https://viacep.com.br/", "Sistema externo de consulta e verificação de CEP")
 
 Rel(admin, maladireta, "Gerencia destinatários e seus endereços", "HTTPS")
-Rel(maladireta, viacep, "Consulta CEP", "HTTPS")
+Rel(maladireta, viacep, "Consulta CEP", "HTTPS", "Dashed")
 
 @enduml

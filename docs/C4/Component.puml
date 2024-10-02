@@ -10,7 +10,7 @@ Container(api, "API Backend", "Class Library.NET 8", "API Rest para a aplicacao"
     Component(enderecorepository, "Repositório do Endereço", "Interface Repository", "Gerencia operações no banco de dados")
 }
 
-Rel(api, destinatariocontroller, "Chama", "Verbos HTTP")
+Rel(api, destinatariocontroller, "Chama", "Verbos HTTP", "Dashed")
 Rel(destinatariocontroller, destinatarioservice, "Chama", "Dashed")
 Rel(destinatarioservice, destinatariorepository, "Chama", "Método")
 Rel(api, enderecocontroller, "Chama", "Verbos HTTP")
