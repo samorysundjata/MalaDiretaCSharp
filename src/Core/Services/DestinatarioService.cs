@@ -1,6 +1,8 @@
-﻿namespace Core.Services
+﻿using Core.Services.Interfaces;
+
+namespace Core.Services
 {
-    public class DestinatarioService
+    public class DestinatarioService : IDestinatarioService
     {
     }
 }

@@ -1,5 +1,7 @@
-﻿using Infra.Data;
+﻿using Core.Entities;
+using Infra.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Controllers
 {
@@ -14,80 +16,69 @@ namespace WebAPI.Controllers
             _context = context;
         }
 
-        //[HttpGet("endereco")]
-        //// GET: EnderecoController
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        [HttpGet("enderecos")]
+        public async Task<ActionResult<IEnumerable<Endereco>>> GetEnderecos()
+        {
+            var enderecos = await _context.Enderecos.ToListAsync();
+            return Ok(enderecos);
+        }
 
-        //// GET: EnderecoController/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        [HttpPost("endereco")]
+        public async Task<ActionResult<Endereco>> PostEndereco(Endereco endereco)
+        {
+            _context.Enderecos.Add(endereco);
+            await _context.SaveChangesAsync();
 
-        //// GET: EnderecoController/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+            return CreatedAtAction("GetEndereco", new { id = endereco.Id }, endereco);
+        }
 
-        //// POST: EnderecoController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpDelete("endereco/{id}")]
+        public async Task<ActionResult<Endereco>> DeleteEndereco(int id)
+        {
+            var endereco = await _context.Enderecos.FindAsync(id);
+            if (endereco == null)
+            {
+                return NotFound();
+            }
 
-        //// GET: EnderecoController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+            _context.Enderecos.Remove(endereco);
+            await _context.SaveChangesAsync();
 
-        //// POST: EnderecoController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            return endereco;
+        }
 
-        //// GET: EnderecoController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        [HttpPut("endereco/{id}")]
+        public async Task<IActionResult> PutEndereco(int id, Endereco endereco)
+        {
+            if (id != endereco.Id)
+            {
+                return BadRequest();
+            }
 
-        //// POST: EnderecoController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            _context.Entry(endereco).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EnderecoExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool EnderecoExists(int id)
+        {
+            return _context.Enderecos.Any(e => e.Id == id);
+        }
     }
 }

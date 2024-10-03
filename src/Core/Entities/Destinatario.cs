@@ -1,6 +1,8 @@
-﻿namespace Core.Entities
+﻿using Core.Entities.Interfaces;
+
+namespace Core.Entities
 {
-    public class Destinatario
+    public class Destinatario : IDestinatario
     {
         public int Id { get; set; }
         public string Nome { get; set; }

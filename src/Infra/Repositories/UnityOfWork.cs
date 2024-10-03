@@ -11,7 +11,10 @@ namespace Infra.Repositories
 
         public AppDbContext _context { get; set; }
 
-        public UnityOfWork(AppDbContext context) => _context = context;
+        public UnityOfWork(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public IDestinatarioRepository DestinatarioRepository
         {
