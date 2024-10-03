@@ -31,6 +31,9 @@ namespace Infra.Repositories
 
         public async Task<T?> GetById(Expression<Func<T, bool>> predicate)
         {
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+
             return await _context.Set<T>().SingleOrDefaultAsync(predicate);
         }
 

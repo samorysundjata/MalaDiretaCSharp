@@ -33,10 +33,9 @@ namespace Infra.Repositories
             return context.Destinatarios;
         }
 
-        Task<Destinatario> IRepository<Destinatario>.GetById(Expression<Func<Destinatario, bool>> predicate)
+        Task<Destinatario?> IRepository<Destinatario>.GetById(Expression<Func<Destinatario, bool>> predicate)
         {
             return context.Destinatarios.SingleOrDefaultAsync(predicate);
-
         }
 
         void IRepository<Destinatario>.Update(Destinatario entity)
@@ -44,8 +43,11 @@ namespace Infra.Repositories
             context.Destinatarios.Update(entity);
         }
 
-        public Endereco Get(int id)
+        public Endereco? Get(int id)
         {
+            if (id == 0)
+                throw new ArgumentNullException(nameof(id));
+
             return context.Enderecos.Find(id);
         }
     }
