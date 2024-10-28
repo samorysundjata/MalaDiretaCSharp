@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Services
 {
-    public class DestinatarioService : IDestinatarioService
+    public class DestinatarioService: IDestinatarioService
     {
-        private static readonly ILog Log = log4net.LogManager.GetLogger(typeof(DestinatarioService));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(DestinatarioService));
         private readonly DbContext _context;
 
         public DestinatarioService(DbContext context)
         {
-            _context = context;
+            context = _context;
         }
 
         public async Task AddDestinatarioAsync(Destinatario destinatario)
@@ -20,9 +20,9 @@ namespace Core.Services
             if (destinatario == null)
             {
                 throw new ArgumentNullException(nameof(destinatario));
-
-            } else
-            { 
+            }
+            else
+            {
                 try
                 {
                     await _context.Set<Destinatario>().AddAsync(destinatario);
@@ -31,7 +31,7 @@ namespace Core.Services
                 catch (Exception ex)
                 {
                     Log.Error($"An error occurred while adding the destinatario: {ex.Message}", ex);
-                    throw; // Re-throw the exception to ensure the caller is aware of the failure
+                    throw new Exception($"An error occurred while adding the destinatario: {ex.Message}", ex);
                 }
             }
         }
@@ -48,8 +48,8 @@ namespace Core.Services
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"An error occurred while deleting the destinatario: {ex.Message}", ex);
-                    throw; // Re-throw the exception to ensure the caller is aware of the failure
+                    Log.Error($"An error occurred while deleting the destinatario with ID {id}: {ex.Message}", ex);
+                    throw new Exception($"An error occurred while deleting the destinatario with ID {id}: {ex.Message}", ex);
                 }
             }
         }
@@ -63,11 +63,11 @@ namespace Core.Services
             catch (Exception ex)
             {
                 Log.Error($"An error occurred while retrieving all destinatarios: {ex.Message}", ex);
-                throw; // Re-throw the exception to ensure the caller is aware of the failure
+                throw new Exception($"An error occurred while retrieving all destinatarios: {ex.Message}", ex);
             }
         }
 
-        public async Task<Destinatario> GetDestinatarioByIdAsync(int id)
+        public async Task<Destinatario?> GetDestinatarioByIdAsync(int id)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Core.Services
             catch (Exception ex)
             {
                 Log.Error($"An error occurred while retrieving the destinatario with ID {id}: {ex.Message}", ex);
-                throw; // Re-throw the exception to ensure the caller is aware of the failure
+                throw new Exception($"An error occurred while retrieving the destinatario with ID {id}: {ex.Message}", ex);
             }
         }
 
@@ -95,7 +95,7 @@ namespace Core.Services
             catch (Exception ex)
             {
                 Log.Error($"An error occurred while updating the destinatario with ID {destinatario.Id}: {ex.Message}", ex);
-                throw; // Re-throw the exception to ensure the caller is aware of the failure
+                throw new Exception($"An error occurred while updating the destinatario with ID {destinatario.Id}: {ex.Message}", ex);
             }
         }
     }
