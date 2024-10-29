@@ -9,6 +9,8 @@ namespace Core.Services
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(DestinatarioService));
         private readonly DbContext _context;
+        private string _cep = String.Empty;
+        private readonly ViaCEPService _viaCEPService;
 
         public EnderecoService(DbContext context)
         {
@@ -20,6 +22,11 @@ namespace Core.Services
             if (endereco == null)
             {
                 throw new ArgumentNullException(nameof(endereco));
+            }
+
+            if (endereco.CEP.Length != 8)
+            {
+                _cep = await _viaCEPService.GetCEPByAddress(endereco.CEP);
             }
 
             try

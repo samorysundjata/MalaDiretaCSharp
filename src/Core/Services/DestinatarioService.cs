@@ -14,46 +14,7 @@ namespace Core.Services
         {
             context = _context;
         }
-
-        public async Task AddDestinatarioAsync(Destinatario destinatario)
-        {
-            if (destinatario == null)
-            {
-                throw new ArgumentNullException(nameof(destinatario));
-            }
-            else
-            {
-                try
-                {
-                    await _context.Set<Destinatario>().AddAsync(destinatario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    Log.Error($"An error occurred while adding the destinatario: {ex.Message}", ex);
-                    throw new Exception($"An error occurred while adding the destinatario: {ex.Message}", ex);
-                }
-            }
-        }
-
-        public async Task DeleteDestinatarioAsync(int id)
-        {
-            var destinatario = await _context.Set<Destinatario>().FindAsync(id);
-            if (destinatario != null)
-            {
-                try
-                {
-                    _context.Set<Destinatario>().Remove(destinatario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    Log.Error($"An error occurred while deleting the destinatario with ID {id}: {ex.Message}", ex);
-                    throw new Exception($"An error occurred while deleting the destinatario with ID {id}: {ex.Message}", ex);
-                }
-            }
-        }
-
+       
         public async Task<IEnumerable<Destinatario>> GetAllDestinatariosAsync()
         {
             try
@@ -80,6 +41,27 @@ namespace Core.Services
             }
         }
 
+        public async Task AddDestinatarioAsync(Destinatario destinatario)
+        {
+            if (destinatario == null)
+            {
+                throw new ArgumentNullException(nameof(destinatario));
+            }
+            else
+            {
+                try
+                {
+                    await _context.Set<Destinatario>().AddAsync(destinatario);
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"An error occurred while adding the destinatario: {ex.Message}", ex);
+                    throw new Exception($"An error occurred while adding the destinatario: {ex.Message}", ex);
+                }
+            }
+        }
+
         public async Task UpdateDestinatarioAsync(Destinatario destinatario)
         {
             if (destinatario == null)
@@ -98,5 +80,38 @@ namespace Core.Services
                 throw new Exception($"An error occurred while updating the destinatario with ID {destinatario.Id}: {ex.Message}", ex);
             }
         }
+
+        public async Task DeleteDestinatarioAsync(int id)
+        {
+            var destinatario = await _context.Set<Destinatario>().FindAsync(id);
+            if (destinatario != null)
+            {
+                try
+                {
+                    _context.Set<Destinatario>().Remove(destinatario);
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"An error occurred while deleting the destinatario with ID {id}: {ex.Message}", ex);
+                    throw new Exception($"An error occurred while deleting the destinatario with ID {id}: {ex.Message}", ex);
+                }
+            }
+        }
+        
+        public async Task<Endereco> GetEnderecoByDestinatarioIdAsync(int destinatarioId)
+        {
+            try
+            {
+                var destinatario = await _context.Set<Destinatario>().Include(d => d.Endereco).FirstOrDefaultAsync(d => d.Id == destinatarioId);
+                return destinatario.Endereco;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"An error occurred while retrieving the endereco for destinatario with ID {destinatarioId}: {ex.Message}", ex);
+                throw new Exception($"An error occurred while retrieving the endereco for destinatario with ID {destinatarioId}: {ex.Message}", ex);
+            }
+        }
+        
     }
 }
