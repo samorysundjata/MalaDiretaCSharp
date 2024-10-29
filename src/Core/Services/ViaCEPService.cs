@@ -28,6 +28,8 @@ namespace Core.Services
             }
         }
 
+
+
         // Example method to parse the JSON response from ViaCEP
         private string ParseAddressFromJson(string jsonResponse)
         {
@@ -46,6 +48,23 @@ namespace Core.Services
             string formattedAddress = $"{address}, {neighborhood}, {city} - {state}, {cep}";
 
             return formattedAddress;
+        }
+        public async Task<string> GetCEPByAddress(string address)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string url = $"https://viacep.com.br/ws/{address}/json/";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    return jsonResponse;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
     }
 }
