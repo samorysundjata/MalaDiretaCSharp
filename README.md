@@ -1,4 +1,3 @@
 # MalaDiretaCSharp
 
-## DescriÁ„o do Projeto
-
+> Este projeto ser√° atualizado para um framework mais novo e pacotes que sejam livres que possam ser atualizados permitindo seguran√ßa.
